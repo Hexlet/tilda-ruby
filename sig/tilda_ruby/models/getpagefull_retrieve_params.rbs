@@ -1,0 +1,23 @@
+module TildaRuby
+  module Models
+    type getpagefull_retrieve_params =
+      { pageid: String } & TildaRuby::Internal::Type::request_parameters
+
+    class GetpagefullRetrieveParams < TildaRuby::Internal::Type::BaseModel
+      extend TildaRuby::Internal::Type::RequestParameters::Converter
+      include TildaRuby::Internal::Type::RequestParameters
+
+      attr_accessor pageid: String
+
+      def initialize: (
+        pageid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        pageid: String,
+        request_options: TildaRuby::RequestOptions
+      }
+    end
+  end
+end

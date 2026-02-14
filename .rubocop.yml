@@ -40,9 +40,9 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "Tilda::Internal::Type::BaseModel$"
+    - "TildaRuby::Internal::Type::BaseModel$"
     - "^\\s*[A-Z0-9_]+ = :"
-    - "Tilda::(Models|Resources|Test)::"
+    - "TildaRuby::(Models|Resources|Test)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:
