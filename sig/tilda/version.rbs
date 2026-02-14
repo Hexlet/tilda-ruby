@@ -1,3 +1,0 @@
-module Tilda
-  VERSION: String
-end

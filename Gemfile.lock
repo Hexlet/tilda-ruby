@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    tilda (0.0.1)
+    tilda-ruby (0.0.1)
       cgi
       connection_pool
 
@@ -219,7 +219,7 @@ DEPENDENCIES
   syntax_tree
   syntax_tree-rbs!
   tapioca
-  tilda!
+  tilda-ruby!
   webmock
   webrick
   yard

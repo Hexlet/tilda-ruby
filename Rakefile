@@ -162,7 +162,7 @@ multitask(:"build:gem") do
     sig/*
   GLOB
 
-  sh(*%w[gem build -- tilda.gemspec])
+  sh(*%w[gem build -- tilda_ruby.gemspec])
   rm_rf(ignore_file)
 end
 

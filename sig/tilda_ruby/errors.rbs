@@ -1,0 +1,117 @@
+module TildaRuby
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < TildaRuby::Errors::Error
+      def cause: -> StandardError?
+
+      def initialize: (
+        on: Class,
+        method: Symbol,
+        target: top,
+        value: top,
+        ?cause: StandardError?
+      ) -> void
+    end
+
+    class APIError < TildaRuby::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor headers: ::Hash[String, String]?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?headers: ::Hash[String, String]?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < TildaRuby::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?headers: ::Hash[String, String]?,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < TildaRuby::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?headers: ::Hash[String, String]?,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < TildaRuby::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        headers: ::Hash[String, String]?,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        headers: ::Hash[String, String]?,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < TildaRuby::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
+  end
+end

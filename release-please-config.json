@@ -60,7 +60,7 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/tilda/version.rb",
+  "version-file": "lib/tilda_ruby/version.rb",
   "extra-files": [
     {
       "type": "ruby-readme",

@@ -1,0 +1,9 @@
+module TildaRuby
+  module Internal
+    extend TildaRuby::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | TildaRuby::FilePart
+
+    OMIT: Object
+  end
+end

@@ -1,0 +1,121 @@
+module TildaRuby
+  module Models
+    type getprojectinfo_retrieve_response =
+      TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0
+      | TildaRuby::Error
+
+    module GetprojectinfoRetrieveResponse
+      extend TildaRuby::Internal::Type::Union
+
+      type union_member0 =
+        {
+          result: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::Result,
+          status: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::status
+        }
+
+      class UnionMember0 < TildaRuby::Internal::Type::BaseModel
+        attr_accessor result: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::Result
+
+        attr_accessor status: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::status
+
+        def initialize: (
+          result: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::Result,
+          status: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::status
+        ) -> void
+
+        def to_hash: -> {
+          result: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::Result,
+          status: TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::status
+        }
+
+        type result =
+          {
+            id: String,
+            customcsstext: String,
+            customdomain: String,
+            descr: String,
+            export_csspath: String,
+            export_imgpath: String,
+            export_jspath: String,
+            favicon: String,
+            indexpageid: String,
+            :page404id => String,
+            title: String,
+            images: ::Array[TildaRuby::ImageMapping]
+          }
+
+        class Result < TildaRuby::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor customcsstext: String
+
+          attr_accessor customdomain: String
+
+          attr_accessor descr: String
+
+          attr_accessor export_csspath: String
+
+          attr_accessor export_imgpath: String
+
+          attr_accessor export_jspath: String
+
+          attr_accessor favicon: String
+
+          attr_accessor indexpageid: String
+
+          attr_accessor page404id: String
+
+          attr_accessor title: String
+
+          attr_reader images: ::Array[TildaRuby::ImageMapping]?
+
+          def images=: (
+            ::Array[TildaRuby::ImageMapping]
+          ) -> ::Array[TildaRuby::ImageMapping]
+
+          def initialize: (
+            id: String,
+            customcsstext: String,
+            customdomain: String,
+            descr: String,
+            export_csspath: String,
+            export_imgpath: String,
+            export_jspath: String,
+            favicon: String,
+            indexpageid: String,
+            page404id: String,
+            title: String,
+            ?images: ::Array[TildaRuby::ImageMapping]
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            customcsstext: String,
+            customdomain: String,
+            descr: String,
+            export_csspath: String,
+            export_imgpath: String,
+            export_jspath: String,
+            favicon: String,
+            indexpageid: String,
+            :page404id => String,
+            title: String,
+            images: ::Array[TildaRuby::ImageMapping]
+          }
+        end
+
+        type status = :FOUND
+
+        module Status
+          extend TildaRuby::Internal::Type::Enum
+
+          FOUND: :FOUND
+
+          def self?.values: -> ::Array[TildaRuby::Models::GetprojectinfoRetrieveResponse::UnionMember0::status]
+        end
+      end
+
+      def self?.variants: -> ::Array[TildaRuby::Models::getprojectinfo_retrieve_response]
+    end
+  end
+end

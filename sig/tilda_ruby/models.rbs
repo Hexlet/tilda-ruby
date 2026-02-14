@@ -1,0 +1,19 @@
+module TildaRuby
+  class Error = TildaRuby::Models::Error
+
+  class GetpageexportRetrieveParams = TildaRuby::Models::GetpageexportRetrieveParams
+
+  class GetpagefullexportRetrieveParams = TildaRuby::Models::GetpagefullexportRetrieveParams
+
+  class GetpagefullRetrieveParams = TildaRuby::Models::GetpagefullRetrieveParams
+
+  class GetpageRetrieveParams = TildaRuby::Models::GetpageRetrieveParams
+
+  class GetpageslistRetrieveParams = TildaRuby::Models::GetpageslistRetrieveParams
+
+  class GetprojectinfoRetrieveParams = TildaRuby::Models::GetprojectinfoRetrieveParams
+
+  class GetprojectslistListParams = TildaRuby::Models::GetprojectslistListParams
+
+  class ImageMapping = TildaRuby::Models::ImageMapping
+end

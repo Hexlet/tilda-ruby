@@ -5,7 +5,7 @@ include:
   - 'Rakefile'
   - 'examples/**/*.rb'
   - 'lib/**/*.rb'
-  - 'test/tilda/resource_namespaces.rb'
-  - 'test/tilda/test_helper.rb'
+  - 'test/tilda_ruby/resource_namespaces.rb'
+  - 'test/tilda_ruby/test_helper.rb'
 exclude:
   - 'rbi/**/*'

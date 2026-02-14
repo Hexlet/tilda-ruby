@@ -1,0 +1,23 @@
+module TildaRuby
+  module Models
+    type getpageslist_retrieve_params =
+      { projectid: String } & TildaRuby::Internal::Type::request_parameters
+
+    class GetpageslistRetrieveParams < TildaRuby::Internal::Type::BaseModel
+      extend TildaRuby::Internal::Type::RequestParameters::Converter
+      include TildaRuby::Internal::Type::RequestParameters
+
+      attr_accessor projectid: String
+
+      def initialize: (
+        projectid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        projectid: String,
+        request_options: TildaRuby::RequestOptions
+      }
+    end
+  end
+end
