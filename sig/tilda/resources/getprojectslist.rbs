@@ -1,0 +1,11 @@
+module Tilda
+  module Resources
+    class Getprojectslist
+      def list: (
+        ?request_options: Tilda::request_opts
+      ) -> Tilda::Models::getprojectslist_list_response
+
+      def initialize: (client: Tilda::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,12 @@
+module Tilda
+  module Resources
+    class Getprojectinfo
+      def retrieve: (
+        projectid: String,
+        ?request_options: Tilda::request_opts
+      ) -> Tilda::Models::getprojectinfo_retrieve_response
+
+      def initialize: (client: Tilda::Client) -> void
+    end
+  end
+end

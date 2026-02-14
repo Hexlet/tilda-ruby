@@ -1,0 +1,15 @@
+module Tilda
+  module Models
+    type getprojectslist_list_params =
+      {  } & Tilda::Internal::Type::request_parameters
+
+    class GetprojectslistListParams < Tilda::Internal::Type::BaseModel
+      extend Tilda::Internal::Type::RequestParameters::Converter
+      include Tilda::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Tilda::request_opts) -> void
+
+      def to_hash: -> { request_options: Tilda::RequestOptions }
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Tilda
+  module Models
+    type error = { status: Tilda::Models::Error::status, message: String }
+
+    class Error < Tilda::Internal::Type::BaseModel
+      attr_accessor status: Tilda::Models::Error::status
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      def initialize: (
+        status: Tilda::Models::Error::status,
+        ?message: String
+      ) -> void
+
+      def to_hash: -> { status: Tilda::Models::Error::status, message: String }
+
+      type status = :ERROR
+
+      module Status
+        extend Tilda::Internal::Type::Enum
+
+        ERROR: :ERROR
+
+        def self?.values: -> ::Array[Tilda::Models::Error::status]
+      end
+    end
+  end
+end

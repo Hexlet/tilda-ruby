@@ -1,0 +1,9 @@
+module Tilda
+  module Internal
+    extend Tilda::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Tilda::FilePart
+
+    OMIT: Object
+  end
+end
