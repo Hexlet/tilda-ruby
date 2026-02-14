@@ -1,0 +1,3 @@
+module TildaRuby
+  VERSION: String
+end

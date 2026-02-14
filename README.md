@@ -1,28 +1,32 @@
 # Tilda Ruby API library
 
-The Tilda Ruby library provides convenient access to the Tilda REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/stainless-sdks/tilda-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Tilda Ruby library provides convenient access to the Tilda REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/Hexlet/tilda-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/tilda).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/tilda-ruby).
 
 ## Installation
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
+<!-- x-release-please-start-version -->
+
 ```ruby
-gem "tilda", "~> 0.0.1"
+gem "tilda-ruby", "~> 0.0.2"
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
 ```ruby
 require "bundler/setup"
-require "tilda"
+require "tilda_ruby"
 
-tilda = Tilda::Client.new(
+tilda = TildaRuby::Client.new(
   api_key: ENV["TILDA_API_KEY"] # This is the default and can be omitted
 )
 
@@ -33,17 +37,17 @@ puts(getpage)
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Tilda::Errors::APIError` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `TildaRuby::Errors::APIError` will be thrown:
 
 ```ruby
 begin
   getpage = tilda.getpage.retrieve(pageid: "REPLACE_ME")
-rescue Tilda::Errors::APIConnectionError => e
+rescue TildaRuby::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
-rescue Tilda::Errors::RateLimitError => e
+rescue TildaRuby::Errors::RateLimitError => e
   puts("A 429 status code was received; we should back off a bit.")
-rescue Tilda::Errors::APIStatusError => e
+rescue TildaRuby::Errors::APIStatusError => e
   puts("Another non-200-range status code was received")
   puts(e.status)
 end
@@ -75,7 +79,7 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-tilda = Tilda::Client.new(
+tilda = TildaRuby::Client.new(
   max_retries: 0 # default is 2
 )
 
@@ -89,7 +93,7 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 
 ```ruby
 # Configure the default for all requests:
-tilda = Tilda::Client.new(
+tilda = TildaRuby::Client.new(
   timeout: nil # default is 60
 )
 
@@ -97,7 +101,7 @@ tilda = Tilda::Client.new(
 tilda.getpage.retrieve(pageid: "REPLACE_ME", request_options: {timeout: 5})
 ```
 
-On timeout, `Tilda::Errors::APITimeoutError` is raised.
+On timeout, `TildaRuby::Errors::APITimeoutError` is raised.
 
 Note that requests that time out are retried by default.
 
@@ -105,7 +109,7 @@ Note that requests that time out are retried by default.
 
 ### BaseModel
 
-All parameter and response objects inherit from `Tilda::Internal::Type::BaseModel`, which provides several conveniences, including:
+All parameter and response objects inherit from `TildaRuby::Internal::Type::BaseModel`, which provides several conveniences, including:
 
 1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
 
@@ -157,9 +161,9 @@ response = client.request(
 
 ### Concurrency & connection pooling
 
-The `Tilda::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
+The `TildaRuby::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
 
-Each instance of `Tilda::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
+Each instance of `TildaRuby::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
 
 When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
 
@@ -182,7 +186,7 @@ Or, equivalently:
 tilda.getpage.retrieve(pageid: "REPLACE_ME")
 
 # You can also splat a full Params class:
-params = Tilda::GetpageRetrieveParams.new(pageid: "REPLACE_ME")
+params = TildaRuby::GetpageRetrieveParams.new(pageid: "REPLACE_ME")
 tilda.getpage.retrieve(**params)
 ```
 
@@ -198,4 +202,4 @@ Ruby 3.2.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/stainless-sdks/tilda-ruby/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/Hexlet/tilda-ruby/tree/main/CONTRIBUTING.md).

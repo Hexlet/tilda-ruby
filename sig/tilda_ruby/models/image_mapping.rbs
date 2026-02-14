@@ -1,0 +1,15 @@
+module TildaRuby
+  module Models
+    type image_mapping = { from: String, to: String }
+
+    class ImageMapping < TildaRuby::Internal::Type::BaseModel
+      attr_accessor from: String
+
+      attr_accessor to: String
+
+      def initialize: (from: String, to: String) -> void
+
+      def to_hash: -> { from: String, to: String }
+    end
+  end
+end
