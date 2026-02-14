@@ -1,0 +1,12 @@
+module Tilda
+  module Resources
+    class Getpagefull
+      def retrieve: (
+        pageid: String,
+        ?request_options: Tilda::request_opts
+      ) -> Tilda::Models::getpagefull_retrieve_response
+
+      def initialize: (client: Tilda::Client) -> void
+    end
+  end
+end

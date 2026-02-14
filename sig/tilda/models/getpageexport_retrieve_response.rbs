@@ -1,0 +1,175 @@
+module Tilda
+  module Models
+    type getpageexport_retrieve_response =
+      Tilda::Models::GetpageexportRetrieveResponse::UnionMember0 | Tilda::Error
+
+    module GetpageexportRetrieveResponse
+      extend Tilda::Internal::Type::Union
+
+      type union_member0 =
+        {
+          result: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result,
+          status: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::status
+        }
+
+      class UnionMember0 < Tilda::Internal::Type::BaseModel
+        attr_accessor result: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result
+
+        attr_accessor status: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::status
+
+        def initialize: (
+          result: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result,
+          status: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::status
+        ) -> void
+
+        def to_hash: -> {
+          result: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result,
+          status: Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::status
+        }
+
+        type result =
+          {
+            id: String,
+            alias_: String,
+            date: String,
+            descr: String,
+            featureimg: String,
+            filename: String,
+            html: String,
+            img: String,
+            projectid: String,
+            published: String,
+            sort: String,
+            title: String,
+            css: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css],
+            images: ::Array[Tilda::ImageMapping],
+            js: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]
+          }
+
+        class Result < Tilda::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor alias_: String
+
+          attr_accessor date: String
+
+          attr_accessor descr: String
+
+          attr_accessor featureimg: String
+
+          attr_accessor filename: String
+
+          attr_accessor html: String
+
+          attr_accessor img: String
+
+          attr_accessor projectid: String
+
+          attr_accessor published: String
+
+          attr_accessor sort: String
+
+          attr_accessor title: String
+
+          attr_reader css: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css]?
+
+          def css=: (
+            ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css]
+          ) -> ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css]
+
+          attr_reader images: ::Array[Tilda::ImageMapping]?
+
+          def images=: (
+            ::Array[Tilda::ImageMapping]
+          ) -> ::Array[Tilda::ImageMapping]
+
+          attr_reader js: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]?
+
+          def js=: (
+            ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]
+          ) -> ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]
+
+          def initialize: (
+            id: String,
+            alias_: String,
+            date: String,
+            descr: String,
+            featureimg: String,
+            filename: String,
+            html: String,
+            img: String,
+            projectid: String,
+            published: String,
+            sort: String,
+            title: String,
+            ?css: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css],
+            ?images: ::Array[Tilda::ImageMapping],
+            ?js: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            alias_: String,
+            date: String,
+            descr: String,
+            featureimg: String,
+            filename: String,
+            html: String,
+            img: String,
+            projectid: String,
+            published: String,
+            sort: String,
+            title: String,
+            css: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::Css],
+            images: ::Array[Tilda::ImageMapping],
+            js: ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::Result::J]
+          }
+
+          type css = { from: String, to: String }
+
+          class Css < Tilda::Internal::Type::BaseModel
+            attr_accessor from: String
+
+            attr_accessor to: String
+
+            def initialize: (from: String, to: String) -> void
+
+            def to_hash: -> { from: String, to: String }
+          end
+
+          type j_ = { from: String, to: String, attrs: ::Array[String] }
+
+          class J < Tilda::Internal::Type::BaseModel
+            attr_accessor from: String
+
+            attr_accessor to: String
+
+            attr_reader attrs: ::Array[String]?
+
+            def attrs=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              from: String,
+              to: String,
+              ?attrs: ::Array[String]
+            ) -> void
+
+            def to_hash: -> { from: String, to: String, attrs: ::Array[String] }
+          end
+        end
+
+        type status = :FOUND
+
+        module Status
+          extend Tilda::Internal::Type::Enum
+
+          FOUND: :FOUND
+
+          def self?.values: -> ::Array[Tilda::Models::GetpageexportRetrieveResponse::UnionMember0::status]
+        end
+      end
+
+      def self?.variants: -> ::Array[Tilda::Models::getpageexport_retrieve_response]
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Tilda
+  class Client < Tilda::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String?
+
+    attr_reader getpage: Tilda::Resources::Getpage
+
+    attr_reader getpageexport: Tilda::Resources::Getpageexport
+
+    attr_reader getpagefull: Tilda::Resources::Getpagefull
+
+    attr_reader getpagefullexport: Tilda::Resources::Getpagefullexport
+
+    attr_reader getpageslist: Tilda::Resources::Getpageslist
+
+    attr_reader getprojectinfo: Tilda::Resources::Getprojectinfo
+
+    attr_reader getprojectslist: Tilda::Resources::Getprojectslist
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def initialize: (
+      ?api_key: String?,
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

@@ -1,0 +1,58 @@
+module Tilda
+  module Models
+    type getprojectslist_list_response =
+      Tilda::Models::GetprojectslistListResponse::UnionMember0 | Tilda::Error
+
+    module GetprojectslistListResponse
+      extend Tilda::Internal::Type::Union
+
+      type union_member0 =
+        {
+          result: ::Array[Tilda::Models::GetprojectslistListResponse::UnionMember0::Result],
+          status: Tilda::Models::GetprojectslistListResponse::UnionMember0::status
+        }
+
+      class UnionMember0 < Tilda::Internal::Type::BaseModel
+        attr_accessor result: ::Array[Tilda::Models::GetprojectslistListResponse::UnionMember0::Result]
+
+        attr_accessor status: Tilda::Models::GetprojectslistListResponse::UnionMember0::status
+
+        def initialize: (
+          result: ::Array[Tilda::Models::GetprojectslistListResponse::UnionMember0::Result],
+          status: Tilda::Models::GetprojectslistListResponse::UnionMember0::status
+        ) -> void
+
+        def to_hash: -> {
+          result: ::Array[Tilda::Models::GetprojectslistListResponse::UnionMember0::Result],
+          status: Tilda::Models::GetprojectslistListResponse::UnionMember0::status
+        }
+
+        type result = { id: String, descr: String, title: String }
+
+        class Result < Tilda::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor descr: String
+
+          attr_accessor title: String
+
+          def initialize: (id: String, descr: String, title: String) -> void
+
+          def to_hash: -> { id: String, descr: String, title: String }
+        end
+
+        type status = :FOUND
+
+        module Status
+          extend Tilda::Internal::Type::Enum
+
+          FOUND: :FOUND
+
+          def self?.values: -> ::Array[Tilda::Models::GetprojectslistListResponse::UnionMember0::status]
+        end
+      end
+
+      def self?.variants: -> ::Array[Tilda::Models::getprojectslist_list_response]
+    end
+  end
+end
