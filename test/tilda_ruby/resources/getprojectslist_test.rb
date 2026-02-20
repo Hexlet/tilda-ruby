@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class TildaRuby::Test::Resources::GetprojectslistTest < TildaRuby::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @tilda.getprojectslist.list
 

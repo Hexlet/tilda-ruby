@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    tilda-ruby (0.0.2)
+    tilda-ruby (0.0.3)
       cgi
       connection_pool
 

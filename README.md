@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "tilda-ruby", "~> 0.0.2"
+gem "tilda-ruby", "~> 0.0.3"
 ```
 
 <!-- x-release-please-end -->
