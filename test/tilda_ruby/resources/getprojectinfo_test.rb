@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class TildaRuby::Test::Resources::GetprojectinfoTest < TildaRuby::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @tilda.getprojectinfo.retrieve(projectid: "projectid")
 
