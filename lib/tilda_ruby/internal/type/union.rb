@@ -6,14 +6,14 @@ module TildaRuby
       # @api private
       #
       # @example
-      #   # `getpage_retrieve_response` is a `TildaRuby::Models::GetpageRetrieveResponse`
-      #   case getpage_retrieve_response
-      #   when TildaRuby::Models::GetpageRetrieveResponse::UnionMember0
-      #     puts(getpage_retrieve_response.result)
-      #   when TildaRuby::Error
-      #     puts(getpage_retrieve_response.status)
+      #   # `project_retrieve_response` is a `TildaRuby::Models::ProjectRetrieveResponse`
+      #   case project_retrieve_response
+      #   when TildaRuby::Models::ProjectRetrieveResponse::UnionMember0
+      #     puts(project_retrieve_response.result)
+      #   when TildaRuby::Models::ProjectRetrieveResponse::ErrorResponse
+      #     puts(project_retrieve_response.status)
       #   else
-      #     puts(getpage_retrieve_response)
+      #     puts(project_retrieve_response)
       #   end
       module Union
         include TildaRuby::Internal::Type::Converter

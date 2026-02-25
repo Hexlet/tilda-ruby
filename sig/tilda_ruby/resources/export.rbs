@@ -1,0 +1,17 @@
+module TildaRuby
+  module Resources
+    class Export
+      def retrieve: (
+        pageid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::export_retrieve_response
+
+      def retrieve_full: (
+        pageid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::export_retrieve_full_response
+
+      def initialize: (client: TildaRuby::Client) -> void
+    end
+  end
+end

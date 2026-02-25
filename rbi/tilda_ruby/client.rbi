@@ -10,39 +10,43 @@ module TildaRuby
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
+    # Tilda API public key
     sig { returns(T.nilable(String)) }
-    attr_reader :api_key
+    attr_reader :publickey
 
-    sig { returns(TildaRuby::Resources::Getpage) }
-    attr_reader :getpage
+    # Tilda API secret key
+    sig { returns(T.nilable(String)) }
+    attr_reader :secretkey
 
-    sig { returns(TildaRuby::Resources::Getpageexport) }
-    attr_reader :getpageexport
+    sig { returns(TildaRuby::Resources::Projects) }
+    attr_reader :projects
 
-    sig { returns(TildaRuby::Resources::Getpagefull) }
-    attr_reader :getpagefull
+    sig { returns(TildaRuby::Resources::Pages) }
+    attr_reader :pages
 
-    sig { returns(TildaRuby::Resources::Getpagefullexport) }
-    attr_reader :getpagefullexport
-
-    sig { returns(TildaRuby::Resources::Getpageslist) }
-    attr_reader :getpageslist
-
-    sig { returns(TildaRuby::Resources::Getprojectinfo) }
-    attr_reader :getprojectinfo
-
-    sig { returns(TildaRuby::Resources::Getprojectslist) }
-    attr_reader :getprojectslist
+    sig { returns(TildaRuby::Resources::Export) }
+    attr_reader :export
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
+    private def auth_query
+    end
+
+    # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def public_key_auth
+    end
+
+    # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def secret_key_auth
     end
 
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
-        api_key: T.nilable(String),
+        publickey: T.nilable(String),
+        secretkey: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -51,8 +55,10 @@ module TildaRuby
       ).returns(T.attached_class)
     end
     def self.new(
-      # Defaults to `ENV["TILDA_API_KEY"]`
-      api_key: ENV["TILDA_API_KEY"],
+      # Tilda API public key
+      publickey: nil,
+      # Tilda API secret key
+      secretkey: nil,
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["TILDA_BASE_URL"]`
       base_url: ENV["TILDA_BASE_URL"],

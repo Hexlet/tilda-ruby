@@ -85,7 +85,7 @@ module TildaRuby
           ?idempotency_header: String?
         ) -> void
 
-        private def auth_headers: -> ::Hash[String, String]
+        private def auth_query: -> ::Hash[String, String]
 
         private def user_agent: -> String
 

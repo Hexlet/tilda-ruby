@@ -438,10 +438,10 @@ module TildaRuby
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `error` is a `TildaRuby::Error`
-        #   error => {
-        #     status: status,
-        #     message: message
+        #   # `image_mapping` is a `TildaRuby::ImageMapping`
+        #   image_mapping => {
+        #     from: from,
+        #     to: to
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

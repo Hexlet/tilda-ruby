@@ -1,0 +1,16 @@
+module TildaRuby
+  module Resources
+    class Projects
+      def retrieve: (
+        projectid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::project_retrieve_response
+
+      def list: (
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::project_list_response
+
+      def initialize: (client: TildaRuby::Client) -> void
+    end
+  end
+end
