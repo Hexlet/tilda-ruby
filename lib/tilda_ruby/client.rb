@@ -15,42 +15,49 @@ module TildaRuby
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
+    # Tilda API public key
     # @return [String, nil]
-    attr_reader :api_key
+    attr_reader :publickey
 
-    # @return [TildaRuby::Resources::Getpage]
-    attr_reader :getpage
+    # Tilda API secret key
+    # @return [String, nil]
+    attr_reader :secretkey
 
-    # @return [TildaRuby::Resources::Getpageexport]
-    attr_reader :getpageexport
+    # @return [TildaRuby::Resources::Projects]
+    attr_reader :projects
 
-    # @return [TildaRuby::Resources::Getpagefull]
-    attr_reader :getpagefull
+    # @return [TildaRuby::Resources::Pages]
+    attr_reader :pages
 
-    # @return [TildaRuby::Resources::Getpagefullexport]
-    attr_reader :getpagefullexport
-
-    # @return [TildaRuby::Resources::Getpageslist]
-    attr_reader :getpageslist
-
-    # @return [TildaRuby::Resources::Getprojectinfo]
-    attr_reader :getprojectinfo
-
-    # @return [TildaRuby::Resources::Getprojectslist]
-    attr_reader :getprojectslist
+    # @return [TildaRuby::Resources::Export]
+    attr_reader :export
 
     # @api private
     #
     # @return [Hash{String=>String}]
-    private def auth_headers
-      return {} if @api_key.nil?
+    private def auth_query
+      {**public_key_auth, **secret_key_auth}
+    end
 
-      {"authorization" => "Bearer #{@api_key}"}
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def public_key_auth
+      {"publickey" => @publickey}
+    end
+
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def secret_key_auth
+      {"secretkey" => @secretkey}
     end
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param api_key [String, nil] Defaults to `ENV["TILDA_API_KEY"]`
+    # @param publickey [String, nil] Tilda API public key
+    #
+    # @param secretkey [String, nil] Tilda API secret key
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["TILDA_BASE_URL"]`
@@ -63,7 +70,8 @@ module TildaRuby
     #
     # @param max_retry_delay [Float]
     def initialize(
-      api_key: ENV["TILDA_API_KEY"],
+      publickey: nil,
+      secretkey: nil,
       base_url: ENV["TILDA_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -72,7 +80,8 @@ module TildaRuby
     )
       base_url ||= "https://api.tildacdn.info"
 
-      @api_key = api_key&.to_s
+      @publickey = publickey&.to_s
+      @secretkey = secretkey&.to_s
 
       super(
         base_url: base_url,
@@ -82,13 +91,9 @@ module TildaRuby
         max_retry_delay: max_retry_delay
       )
 
-      @getpage = TildaRuby::Resources::Getpage.new(client: self)
-      @getpageexport = TildaRuby::Resources::Getpageexport.new(client: self)
-      @getpagefull = TildaRuby::Resources::Getpagefull.new(client: self)
-      @getpagefullexport = TildaRuby::Resources::Getpagefullexport.new(client: self)
-      @getpageslist = TildaRuby::Resources::Getpageslist.new(client: self)
-      @getprojectinfo = TildaRuby::Resources::Getprojectinfo.new(client: self)
-      @getprojectslist = TildaRuby::Resources::Getprojectslist.new(client: self)
+      @projects = TildaRuby::Resources::Projects.new(client: self)
+      @pages = TildaRuby::Resources::Pages.new(client: self)
+      @export = TildaRuby::Resources::Export.new(client: self)
     end
   end
 end

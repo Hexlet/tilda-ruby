@@ -1,0 +1,17 @@
+module TildaRuby
+  module Models
+    type project_list_item = { id: String, descr: String, title: String }
+
+    class ProjectListItem < TildaRuby::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor descr: String
+
+      attr_accessor title: String
+
+      def initialize: (id: String, descr: String, title: String) -> void
+
+      def to_hash: -> { id: String, descr: String, title: String }
+    end
+  end
+end

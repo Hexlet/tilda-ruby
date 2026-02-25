@@ -1,0 +1,84 @@
+module TildaRuby
+  module Models
+    type page_export_full =
+      {
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        html: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String,
+        images: ::Array[TildaRuby::ImageMapping]
+      }
+
+    class PageExportFull < TildaRuby::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor alias_: String
+
+      attr_accessor date: String
+
+      attr_accessor descr: String
+
+      attr_accessor featureimg: String
+
+      attr_accessor filename: String
+
+      attr_accessor html: String
+
+      attr_accessor img: String
+
+      attr_accessor projectid: String
+
+      attr_accessor published: String
+
+      attr_accessor sort: String
+
+      attr_accessor title: String
+
+      attr_reader images: ::Array[TildaRuby::ImageMapping]?
+
+      def images=: (
+        ::Array[TildaRuby::ImageMapping]
+      ) -> ::Array[TildaRuby::ImageMapping]
+
+      def initialize: (
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        html: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String,
+        ?images: ::Array[TildaRuby::ImageMapping]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        html: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String,
+        images: ::Array[TildaRuby::ImageMapping]
+      }
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module TildaRuby
+  module Models
+    type js_asset = { from: String, to: String, attrs: ::Array[String] }
+
+    class JsAsset < TildaRuby::Internal::Type::BaseModel
+      attr_accessor from: String
+
+      attr_accessor to: String
+
+      attr_reader attrs: ::Array[String]?
+
+      def attrs=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        from: String,
+        to: String,
+        ?attrs: ::Array[String]
+      ) -> void
+
+      def to_hash: -> { from: String, to: String, attrs: ::Array[String] }
+    end
+  end
+end

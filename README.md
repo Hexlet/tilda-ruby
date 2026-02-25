@@ -8,6 +8,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/tilda-ruby).
 
+The REST API documentation can be found on [help-ru.tilda.cc](https://help-ru.tilda.cc/api).
+
 ## Installation
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
@@ -26,13 +28,11 @@ gem "tilda-ruby", "~> 0.0.2"
 require "bundler/setup"
 require "tilda_ruby"
 
-tilda = TildaRuby::Client.new(
-  api_key: ENV["TILDA_API_KEY"] # This is the default and can be omitted
-)
+tilda = TildaRuby::Client.new(publickey: "My Publickey", secretkey: "My Secretkey")
 
-getpage = tilda.getpage.retrieve(pageid: "REPLACE_ME")
+projects = tilda.projects.list
 
-puts(getpage)
+puts(projects)
 ```
 
 ### Handling errors
@@ -41,7 +41,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  getpage = tilda.getpage.retrieve(pageid: "REPLACE_ME")
+  project = tilda.projects.list
 rescue TildaRuby::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -84,7 +84,7 @@ tilda = TildaRuby::Client.new(
 )
 
 # Or, configure per-request:
-tilda.getpage.retrieve(pageid: "REPLACE_ME", request_options: {max_retries: 5})
+tilda.projects.list(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -98,7 +98,7 @@ tilda = TildaRuby::Client.new(
 )
 
 # Or, configure per-request:
-tilda.getpage.retrieve(pageid: "REPLACE_ME", request_options: {timeout: 5})
+tilda.projects.list(request_options: {timeout: 5})
 ```
 
 On timeout, `TildaRuby::Errors::APITimeoutError` is raised.
@@ -128,9 +128,8 @@ You can send undocumented parameters to any endpoint, and read undocumented resp
 Note: the `extra_` parameters of the same name overrides the documented parameters.
 
 ```ruby
-getpage =
-  tilda.getpage.retrieve(
-    pageid: "REPLACE_ME",
+projects =
+  tilda.projects.list(
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -138,7 +137,7 @@ getpage =
     }
   )
 
-puts(getpage[:my_undocumented_property])
+puts(projects[:my_undocumented_property])
 ```
 
 #### Undocumented request params
@@ -176,18 +175,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-tilda.getpage.retrieve(pageid: "REPLACE_ME")
+tilda.projects.list
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-tilda.getpage.retrieve(pageid: "REPLACE_ME")
+tilda.projects.list
 
 # You can also splat a full Params class:
-params = TildaRuby::GetpageRetrieveParams.new(pageid: "REPLACE_ME")
-tilda.getpage.retrieve(**params)
+params = TildaRuby::ProjectListParams.new
+tilda.projects.list(**params)
 ```
 
 ## Versioning

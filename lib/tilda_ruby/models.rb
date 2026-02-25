@@ -39,21 +39,37 @@ module TildaRuby
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
-  Error = TildaRuby::Models::Error
+  CssAsset = TildaRuby::Models::CssAsset
 
-  GetpageexportRetrieveParams = TildaRuby::Models::GetpageexportRetrieveParams
+  ExportRetrieveFullParams = TildaRuby::Models::ExportRetrieveFullParams
 
-  GetpagefullexportRetrieveParams = TildaRuby::Models::GetpagefullexportRetrieveParams
-
-  GetpagefullRetrieveParams = TildaRuby::Models::GetpagefullRetrieveParams
-
-  GetpageRetrieveParams = TildaRuby::Models::GetpageRetrieveParams
-
-  GetpageslistRetrieveParams = TildaRuby::Models::GetpageslistRetrieveParams
-
-  GetprojectinfoRetrieveParams = TildaRuby::Models::GetprojectinfoRetrieveParams
-
-  GetprojectslistListParams = TildaRuby::Models::GetprojectslistListParams
+  ExportRetrieveParams = TildaRuby::Models::ExportRetrieveParams
 
   ImageMapping = TildaRuby::Models::ImageMapping
+
+  JsAsset = TildaRuby::Models::JsAsset
+
+  PageBody = TildaRuby::Models::PageBody
+
+  PageExportBody = TildaRuby::Models::PageExportBody
+
+  PageExportFull = TildaRuby::Models::PageExportFull
+
+  PageFull = TildaRuby::Models::PageFull
+
+  PageListParams = TildaRuby::Models::PageListParams
+
+  PageRetrieveFullParams = TildaRuby::Models::PageRetrieveFullParams
+
+  PageRetrieveParams = TildaRuby::Models::PageRetrieveParams
+
+  PageSummary = TildaRuby::Models::PageSummary
+
+  ProjectInfo = TildaRuby::Models::ProjectInfo
+
+  ProjectListItem = TildaRuby::Models::ProjectListItem
+
+  ProjectListParams = TildaRuby::Models::ProjectListParams
+
+  ProjectRetrieveParams = TildaRuby::Models::ProjectRetrieveParams
 end
