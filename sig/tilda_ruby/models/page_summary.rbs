@@ -1,0 +1,70 @@
+module TildaRuby
+  module Models
+    type page_summary =
+      {
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String
+      }
+
+    class PageSummary < TildaRuby::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor alias_: String
+
+      attr_accessor date: String
+
+      attr_accessor descr: String
+
+      attr_accessor featureimg: String
+
+      attr_accessor filename: String
+
+      attr_accessor img: String
+
+      attr_accessor projectid: String
+
+      attr_accessor published: String
+
+      attr_accessor sort: String
+
+      attr_accessor title: String
+
+      def initialize: (
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        alias_: String,
+        date: String,
+        descr: String,
+        featureimg: String,
+        filename: String,
+        img: String,
+        projectid: String,
+        published: String,
+        sort: String,
+        title: String
+      }
+    end
+  end
+end

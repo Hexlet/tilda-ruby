@@ -1,19 +1,35 @@
 module TildaRuby
-  class Error = TildaRuby::Models::Error
+  class CssAsset = TildaRuby::Models::CssAsset
 
-  class GetpageexportRetrieveParams = TildaRuby::Models::GetpageexportRetrieveParams
+  class ExportRetrieveFullParams = TildaRuby::Models::ExportRetrieveFullParams
 
-  class GetpagefullexportRetrieveParams = TildaRuby::Models::GetpagefullexportRetrieveParams
-
-  class GetpagefullRetrieveParams = TildaRuby::Models::GetpagefullRetrieveParams
-
-  class GetpageRetrieveParams = TildaRuby::Models::GetpageRetrieveParams
-
-  class GetpageslistRetrieveParams = TildaRuby::Models::GetpageslistRetrieveParams
-
-  class GetprojectinfoRetrieveParams = TildaRuby::Models::GetprojectinfoRetrieveParams
-
-  class GetprojectslistListParams = TildaRuby::Models::GetprojectslistListParams
+  class ExportRetrieveParams = TildaRuby::Models::ExportRetrieveParams
 
   class ImageMapping = TildaRuby::Models::ImageMapping
+
+  class JsAsset = TildaRuby::Models::JsAsset
+
+  class PageBody = TildaRuby::Models::PageBody
+
+  class PageExportBody = TildaRuby::Models::PageExportBody
+
+  class PageExportFull = TildaRuby::Models::PageExportFull
+
+  class PageFull = TildaRuby::Models::PageFull
+
+  class PageListParams = TildaRuby::Models::PageListParams
+
+  class PageRetrieveFullParams = TildaRuby::Models::PageRetrieveFullParams
+
+  class PageRetrieveParams = TildaRuby::Models::PageRetrieveParams
+
+  class PageSummary = TildaRuby::Models::PageSummary
+
+  class ProjectInfo = TildaRuby::Models::ProjectInfo
+
+  class ProjectListItem = TildaRuby::Models::ProjectListItem
+
+  class ProjectListParams = TildaRuby::Models::ProjectListParams
+
+  class ProjectRetrieveParams = TildaRuby::Models::ProjectRetrieveParams
 end

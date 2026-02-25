@@ -1,0 +1,15 @@
+module TildaRuby
+  module Models
+    type css_asset = { from: String, to: String }
+
+    class CssAsset < TildaRuby::Internal::Type::BaseModel
+      attr_accessor from: String
+
+      attr_accessor to: String
+
+      def initialize: (from: String, to: String) -> void
+
+      def to_hash: -> { from: String, to: String }
+    end
+  end
+end

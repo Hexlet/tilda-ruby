@@ -1,0 +1,22 @@
+module TildaRuby
+  module Resources
+    class Pages
+      def retrieve: (
+        pageid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::page_retrieve_response
+
+      def list: (
+        projectid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::page_list_response
+
+      def retrieve_full: (
+        pageid: String,
+        ?request_options: TildaRuby::request_opts
+      ) -> TildaRuby::Models::page_retrieve_full_response
+
+      def initialize: (client: TildaRuby::Client) -> void
+    end
+  end
+end

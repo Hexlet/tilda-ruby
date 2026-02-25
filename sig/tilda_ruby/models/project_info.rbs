@@ -1,0 +1,79 @@
+module TildaRuby
+  module Models
+    type project_info =
+      {
+        id: String,
+        customcsstext: String,
+        customdomain: String,
+        descr: String,
+        export_csspath: String,
+        export_imgpath: String,
+        export_jspath: String,
+        favicon: String,
+        indexpageid: String,
+        :page404id => String,
+        title: String,
+        images: ::Array[TildaRuby::ImageMapping]
+      }
+
+    class ProjectInfo < TildaRuby::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor customcsstext: String
+
+      attr_accessor customdomain: String
+
+      attr_accessor descr: String
+
+      attr_accessor export_csspath: String
+
+      attr_accessor export_imgpath: String
+
+      attr_accessor export_jspath: String
+
+      attr_accessor favicon: String
+
+      attr_accessor indexpageid: String
+
+      attr_accessor page404id: String
+
+      attr_accessor title: String
+
+      attr_reader images: ::Array[TildaRuby::ImageMapping]?
+
+      def images=: (
+        ::Array[TildaRuby::ImageMapping]
+      ) -> ::Array[TildaRuby::ImageMapping]
+
+      def initialize: (
+        id: String,
+        customcsstext: String,
+        customdomain: String,
+        descr: String,
+        export_csspath: String,
+        export_imgpath: String,
+        export_jspath: String,
+        favicon: String,
+        indexpageid: String,
+        page404id: String,
+        title: String,
+        ?images: ::Array[TildaRuby::ImageMapping]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        customcsstext: String,
+        customdomain: String,
+        descr: String,
+        export_csspath: String,
+        export_imgpath: String,
+        export_jspath: String,
+        favicon: String,
+        indexpageid: String,
+        :page404id => String,
+        title: String,
+        images: ::Array[TildaRuby::ImageMapping]
+      }
+    end
+  end
+end

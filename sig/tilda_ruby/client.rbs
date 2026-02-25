@@ -8,26 +8,25 @@ module TildaRuby
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
-    attr_reader api_key: String?
+    attr_reader publickey: String?
 
-    attr_reader getpage: TildaRuby::Resources::Getpage
+    attr_reader secretkey: String?
 
-    attr_reader getpageexport: TildaRuby::Resources::Getpageexport
+    attr_reader projects: TildaRuby::Resources::Projects
 
-    attr_reader getpagefull: TildaRuby::Resources::Getpagefull
+    attr_reader pages: TildaRuby::Resources::Pages
 
-    attr_reader getpagefullexport: TildaRuby::Resources::Getpagefullexport
+    attr_reader export: TildaRuby::Resources::Export
 
-    attr_reader getpageslist: TildaRuby::Resources::Getpageslist
+    private def auth_query: -> ::Hash[String, String]
 
-    attr_reader getprojectinfo: TildaRuby::Resources::Getprojectinfo
+    private def public_key_auth: -> ::Hash[String, String]
 
-    attr_reader getprojectslist: TildaRuby::Resources::Getprojectslist
-
-    private def auth_headers: -> ::Hash[String, String]
+    private def secret_key_auth: -> ::Hash[String, String]
 
     def initialize: (
-      ?api_key: String?,
+      ?publickey: String?,
+      ?secretkey: String?,
       ?base_url: String?,
       ?max_retries: Integer,
       ?timeout: Float,
