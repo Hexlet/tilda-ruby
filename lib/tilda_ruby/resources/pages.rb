@@ -13,10 +13,11 @@ module TildaRuby
       # @see TildaRuby::Models::PageRetrieveParams
       def retrieve(params)
         parsed, options = TildaRuby::PageRetrieveParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getpage",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::PageRetrieveResponse,
           options: options
         )
@@ -32,10 +33,11 @@ module TildaRuby
       # @see TildaRuby::Models::PageListParams
       def list(params)
         parsed, options = TildaRuby::PageListParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getpageslist",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::PageListResponse,
           options: options
         )
@@ -51,10 +53,11 @@ module TildaRuby
       # @see TildaRuby::Models::PageRetrieveFullParams
       def retrieve_full(params)
         parsed, options = TildaRuby::PageRetrieveFullParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getpagefull",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::PageRetrieveFullResponse,
           options: options
         )
