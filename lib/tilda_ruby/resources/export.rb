@@ -13,10 +13,11 @@ module TildaRuby
       # @see TildaRuby::Models::ExportRetrieveParams
       def retrieve(params)
         parsed, options = TildaRuby::ExportRetrieveParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getpageexport",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::ExportRetrieveResponse,
           options: options
         )
@@ -32,10 +33,11 @@ module TildaRuby
       # @see TildaRuby::Models::ExportRetrieveFullParams
       def retrieve_full(params)
         parsed, options = TildaRuby::ExportRetrieveFullParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getpagefullexport",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::ExportRetrieveFullResponse,
           options: options
         )

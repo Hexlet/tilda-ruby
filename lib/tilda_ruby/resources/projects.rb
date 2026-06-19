@@ -13,10 +13,11 @@ module TildaRuby
       # @see TildaRuby::Models::ProjectRetrieveParams
       def retrieve(params)
         parsed, options = TildaRuby::ProjectRetrieveParams.dump_request(params)
+        query = TildaRuby::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v1/getprojectinfo",
-          query: parsed,
+          query: query,
           model: TildaRuby::Models::ProjectRetrieveResponse,
           options: options
         )
