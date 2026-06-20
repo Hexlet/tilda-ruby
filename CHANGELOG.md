@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 (2026-06-20)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/Hexlet/tilda-ruby/compare/v0.1.1...v0.1.2)
+
+### Chores
+
+* **internal:** codegen related update ([e0ac0b8](https://github.com/Hexlet/tilda-ruby/commit/e0ac0b81918825217fb21a2245bf4971e0d4385d))
+
 ## 0.1.1 (2026-04-23)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/Hexlet/tilda-ruby/compare/v0.1.0...v0.1.1)
