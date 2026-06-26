@@ -80,6 +80,19 @@ module TildaRuby
     )
       base_url ||= "https://api.tildacdn.info"
 
+      headers = {}
+      custom_headers_env = ENV["TILDA_CUSTOM_HEADERS"]
+      unless custom_headers_env.nil?
+        parsed = {}
+        custom_headers_env.split("\n").each do |line|
+          colon = line.index(":")
+          unless colon.nil?
+            parsed[line[0...colon].strip] = line[(colon + 1)..].strip
+          end
+        end
+        headers = parsed.merge(headers)
+      end
+
       @publickey = publickey&.to_s
       @secretkey = secretkey&.to_s
 
@@ -88,7 +101,8 @@ module TildaRuby
         timeout: timeout,
         max_retries: max_retries,
         initial_retry_delay: initial_retry_delay,
-        max_retry_delay: max_retry_delay
+        max_retry_delay: max_retry_delay,
+        headers: headers
       )
 
       @projects = TildaRuby::Resources::Projects.new(client: self)
